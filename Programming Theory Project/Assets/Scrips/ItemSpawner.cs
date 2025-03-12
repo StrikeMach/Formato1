@@ -4,7 +4,7 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     public GameObject itemPrefab;
-    private float spawnRange = 60f; // Rangos (-60 a 60)
+    private float spawnRange = 50f; // Rangos (-60 a 60)
     public float spawnInterval = 10f; // Intervalo entre spawns (10 segundos)
     private GameObject currentItem; // Referencia al objeto actual
 

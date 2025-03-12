@@ -4,7 +4,7 @@ public class MoveGun : MonoBehaviour
 {
     // Update is called once per frame
     public float speed = 50.0f;
-    private float limit = 67.0f;
+    private float limit = 57.0f;
     // Update is called once per frame
     void Update()
     {
@@ -17,6 +17,16 @@ public class MoveGun : MonoBehaviour
         {
             Destroy(gameObject);
 
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Colisión detectada con: " + collision.gameObject.name);
+        // Verifica si colisiona con un objeto con la etiqueta "Enemy"
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject); // Destruye la bala
         }
     }
 }
