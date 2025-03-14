@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private float Range = 57;
     public float speed = 5.0f;
     public float speedRotate = 8.0f;
+
+
     //Temporisador de velocidad
     public int health = 5; // Vida inicial del jugador
     public GameManager gameManager; // Referencia al GameManager
@@ -23,7 +25,32 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Aplica el material seleccionado al jugador
+        ApplySelectedColor();
+
         InitializeLifeBar();
+    }
+
+    // Método para aplicar el material seleccionado al jugador
+    private void ApplySelectedColor()
+    {
+        if (ColorSelectedColor.SelectedMaterial != null)
+        {
+            Renderer renderer = GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material = ColorSelectedColor.SelectedMaterial;
+                Debug.Log("Material aplicado al jugador: " + ColorSelectedColor.SelectedMaterial.name);
+            }
+            else
+            {
+                Debug.LogWarning("No se encontró un Renderer en el jugador.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No se seleccionó ningún material. Usando el material predeterminado.");
+        }
     }
 
     // Update is called once per frame
@@ -47,6 +74,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(ShootGun());
         }
+
     }
     void OnTriggerEnter(Collider other)
     {

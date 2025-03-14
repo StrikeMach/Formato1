@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public delegate void DestroyedAction();
     public event DestroyedAction OnDestroyed;
+    public ParticleSystem explotion;
 
     public float speed;
     public int health = 1;
@@ -66,6 +67,16 @@ public class Enemy : MonoBehaviour
             {
                 Debug.Log("Enemigo destruido por Gun");
                 OnDestroyed?.Invoke();
+
+                // Reproducir el sistema de partículas
+                if (explotion != null)
+                {
+                    ParticleSystem instantiatedExplosion = Instantiate(explotion, transform.position, Quaternion.identity);
+                    instantiatedExplosion.Play();
+                    Destroy(instantiatedExplosion.gameObject, 
+                        instantiatedExplosion.main.duration + instantiatedExplosion.main.startLifetime.constantMax);
+                }
+
 
                 // Incrementar el puntaje
                 GameObject gameManagerObj = GameObject.Find("GameManager");

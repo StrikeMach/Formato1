@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8ddf0b6ae552445b7fb43681eb8b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explotion: {fileID: 6053291399307391110, guid: bd96670b8e120654a9dd5ad49249b4f5, type: 3}
   speed: 0.7
   health: 5
   scoreValue: 50
