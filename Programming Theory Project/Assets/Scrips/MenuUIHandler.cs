@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; // Necesario para trabajar con UI Image
@@ -108,12 +107,8 @@ public class MenuUIHandler : MonoBehaviour
 
     public void ExitButton()
     {
-#if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
 
-#else
         Application.Quit();
-#endif
     }
     // Método para guardar el color seleccionado
     public void SaveColor()

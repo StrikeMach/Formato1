@@ -23,12 +23,17 @@ public class PlayerController : MonoBehaviour
     private bool canShoot = true; //control de disparo
     private float shootDelay = 0.3f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //Sonidos del personaje
+    private AudioSource playerAudio;
+    public AudioClip GunSound;
     void Start()
     {
         // Aplica el material seleccionado al jugador
         ApplySelectedColor();
 
         InitializeLifeBar();
+
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Método para aplicar el material seleccionado al jugador
@@ -73,6 +78,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && canShoot)
         {
             StartCoroutine(ShootGun());
+            playerAudio.PlayOneShot(GunSound, 5f);
         }
 
     }
